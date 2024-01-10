@@ -13,18 +13,18 @@ public enum Jokbo {
     STRAIGHT_FLUSH(5, "submit 5 card", 5);
 
 
-    private final int requiredNumber;
+    private final int requiredCardAmount;
     private final String description;
     private final int value;
 
-    Jokbo(int requiredNumber, String description, int value) {
-        this.requiredNumber = requiredNumber;
+    Jokbo(int requiredCardAmount, String description, int value) {
+        this.requiredCardAmount = requiredCardAmount;
         this.description = description;
         this.value = value;
     }
 
-    public int getRequiredNumber() {
-        return requiredNumber;
+    public int getRequiredCardAmount() {
+        return requiredCardAmount;
     }
 
     public String getDescription() {

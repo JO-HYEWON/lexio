@@ -1,6 +1,6 @@
 package hw.lexio.card;
 
-public enum Color {
+public enum CardColor {
 
     CLOUD(1, "blue color"),
     MOON(2, "yellow color"),
@@ -11,7 +11,7 @@ public enum Color {
     private final int value;
     private final String description;
 
-    Color(int value, String description) {
+    CardColor(int value, String description) {
         this.value = value;
         this.description = description;
     }

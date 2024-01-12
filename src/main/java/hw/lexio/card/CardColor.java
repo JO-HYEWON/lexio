@@ -2,10 +2,10 @@ package hw.lexio.card;
 
 public enum CardColor {
 
-    CLOUD(1, "blue color"),
-    MOON(2, "yellow color"),
-    STAR(3, "green color"),
-    SUN(4, "red color");
+    CLOUD(1, "cloud(blue)"),
+    MOON(2, "moon(yellow)"),
+    STAR(3, "star(green)"),
+    SUN(4, "sun(red)");
 
 
     private final int value;

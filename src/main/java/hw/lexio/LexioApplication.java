@@ -15,7 +15,7 @@ public class LexioApplication {
 		System.out.println("재밌는 렉시오^^");
 		Deck deck = new Deck();
 
-		int numberOfPlayer = 5;
+		int numberOfPlayer = 3;
 
 		deck.createDeck(numberOfPlayer);
 

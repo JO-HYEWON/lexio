@@ -1,5 +1,7 @@
 package hw.lexio.card;
 
+import hw.lexio.player.Player;
+import hw.lexio.player.Player1;
 import org.springframework.util.NumberUtils;
 import org.springframework.util.ObjectUtils;
 
@@ -81,14 +83,40 @@ public class Deck {
         System.out.println("한 사람당 카드의 수는? = " + cardPerPlayer);
         System.out.println("총 카드의 수는? = " + totalCardCount);
 
-        for (int i = 0; i < numberOfPlayer; i++) {
-            System.out.println((i + 1) + "번 플레이어의 패:");
-            for (int j = 0; j < cardPerPlayer; j++) {
-                Card card = deck.remove(0);
-                System.out.println(card.getCardValue().getValue() + ", " + card.getCardColor().getValue());
+        System.out.println(deck);
 
-            }
-            System.out.println();
+        List<Player> players = new ArrayList<>();
+
+        for (int i = 0; i < numberOfPlayer; i++) {
+            List<Card> deckByPlayer = deck.subList(12 * i, 12 * (i+1));
+//            System.out.println(deckByPlayer.get(0).getCardColor().getValue());
+            Player player = Player.builder()
+                    .playerName("Player" + (i+1))
+                    .cardNumberValue(deckByPlayer.get(i).getCardValue().getValue())
+                    .cardColorValue(deckByPlayer.get(i).getCardColor().getValue())
+                    .build();
+            System.out.println("player = " + player);
+            System.out.println(player.getPlayerName());
+            System.out.println(player.getCardNumberValue());
+            System.out.println(player.getCardColorValue());
         }
+
+
+
+        
+//        for (int i = 0; i < cardPerPlayer; i++) {
+//            Card card = deck.remove(0);
+//
+//        }
+
+//        for (int i = 0; i < numberOfPlayer; i++) {
+//            System.out.println((i + 1) + "번 플레이어의 패:");
+//            for (int j = 0; j < cardPerPlayer; j++) {
+//                Card card = deck.remove(0);
+//                System.out.println(card.getCardValue().getValue() + ", " + card.getCardColor().getValue());
+//
+//            }
+//            System.out.println();
+//        }
     }
 }

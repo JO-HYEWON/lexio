@@ -1,18 +1,11 @@
 package hw.lexio.card;
 
 import hw.lexio.player.Player;
-import hw.lexio.player.Player1;
-import hw.lexio.player.Player2;
-import org.springframework.util.NumberUtils;
 import org.springframework.util.ObjectUtils;
 
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.IntStream;
-import java.util.Comparator;
 
 public class Deck {
 
@@ -25,11 +18,11 @@ public class Deck {
         return cardPerPlayer;
     }
 
-    public List<Card> createDeck(int numberOfPlayer) {
+    public void createDeck(int numberOfPlayer) {
         List<Card> initialDeck = new ArrayList<>();
         int totalCardCount = 60 - ((5 - numberOfPlayer) * 12);
         if (numberOfPlayer > 5 || numberOfPlayer < 0) {
-            return null;
+            return;
         }
 
         // 총 60개의 카드를 만듦
@@ -62,66 +55,38 @@ public class Deck {
         // 카드 분배
         distributeDeck(totalDeckByPlayer, numberOfPlayer, cardPerPlayer, totalCardCount);
 
-        return totalDeckByPlayer;
     }
 
-    public List<Card> distributeDeck(List<Card> deck, int numberOfPlayer, int cardPerPlayer, int totalCardCount) {
-
-        checkDeck(deck, numberOfPlayer, cardPerPlayer, totalCardCount);
-
-
-
-        return deck;
-    }
-
-    private static void checkDeck(List<Card> deck, int numberOfPlayer, int cardPerPlayer, int totalCardCount) {
+    public List<Player> distributeDeck(List<Card> deck, int numberOfPlayer, int cardPerPlayer, int totalCardCount) {
 
         System.out.println("넘겨받은 카드는?");
         for (Card card : deck) {
             System.out.println("["+card.getCardValue().getValue() + ", " + card.getCardColor().getDescription()+"]");
         }
         System.out.println("플레이어의 수? : " + numberOfPlayer);
-        System.out.println("한 사람당 카드의 수는? = " + cardPerPlayer);
+//        System.out.println("한 사람당 카드의 수는? = " + cardPerPlayer);
         System.out.println("총 카드의 수는? = " + totalCardCount);
 
         List<Player> players = new ArrayList<>();
-
         List<Card> deckByPlayer = new ArrayList<>();
 
+        // 만들어진 카드 리스트를 player리스트에 넣음
         for (int i = 0; i < numberOfPlayer; i++) {
+        // 현재 한사람당 카드 수는 12개로 고정, 나중에 변경할 때 아래 for문의 12를 해당 변수로 변경
             deckByPlayer = deck.subList(12 * i, 12 * (i + 1));
-
             for (int j = 0; j < 12; j++) {
-            players.add(
-                    Player.builder()
-                            .playerName("Player" + (i+1))
-                            .cardNumberValue(deckByPlayer.get(j).getCardValue().getValue())
-                            .cardColorValue(deckByPlayer.get(j).getCardColor().getValue())
-                            .build()
-                    );
+                players.add(Player.builder()
+                                .playerName("Player" + (i + 1))
+                                .cardNumberValue(deckByPlayer.get(j).getCardValue().getValue())
+                                .cardColorValue(deckByPlayer.get(j).getCardColor().getValue())
+                                .build());
             }
         }
+        savePlayerDeck(players);
+        return players;
+    }
 
-        System.out.println("players = " + players.toString());
-
-
-
-
-
-        
-//        for (int i = 0; i < cardPerPlayer; i++) {
-//            Card card = deck.remove(0);
-//
-//        }
-
-//        for (int i = 0; i < numberOfPlayer; i++) {
-//            System.out.println((i + 1) + "번 플레이어의 패:");
-//            for (int j = 0; j < cardPerPlayer; j++) {
-//                Card card = deck.remove(0);
-//                System.out.println(card.getCardValue().getValue() + ", " + card.getCardColor().getValue());
-//
-//            }
-//            System.out.println();
-//        }
+    private void savePlayerDeck(List<Player> players) {
+        System.out.println(players.toString());
     }
 }

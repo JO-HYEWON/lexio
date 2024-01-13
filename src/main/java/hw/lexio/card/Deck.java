@@ -2,6 +2,7 @@ package hw.lexio.card;
 
 import hw.lexio.player.Player;
 import hw.lexio.player.Player1;
+import hw.lexio.player.Player2;
 import org.springframework.util.NumberUtils;
 import org.springframework.util.ObjectUtils;
 
@@ -83,23 +84,27 @@ public class Deck {
         System.out.println("한 사람당 카드의 수는? = " + cardPerPlayer);
         System.out.println("총 카드의 수는? = " + totalCardCount);
 
-        System.out.println(deck);
-
         List<Player> players = new ArrayList<>();
 
+        List<Card> deckByPlayer = new ArrayList<>();
+
         for (int i = 0; i < numberOfPlayer; i++) {
-            List<Card> deckByPlayer = deck.subList(12 * i, 12 * (i+1));
-//            System.out.println(deckByPlayer.get(0).getCardColor().getValue());
-            Player player = Player.builder()
-                    .playerName("Player" + (i+1))
-                    .cardNumberValue(deckByPlayer.get(i).getCardValue().getValue())
-                    .cardColorValue(deckByPlayer.get(i).getCardColor().getValue())
-                    .build();
-            System.out.println("player = " + player);
-            System.out.println(player.getPlayerName());
-            System.out.println(player.getCardNumberValue());
-            System.out.println(player.getCardColorValue());
+            deckByPlayer = deck.subList(12 * i, 12 * (i + 1));
+
+            for (int j = 0; j < 12; j++) {
+            players.add(
+                    Player.builder()
+                            .playerName("Player" + (i+1))
+                            .cardNumberValue(deckByPlayer.get(j).getCardValue().getValue())
+                            .cardColorValue(deckByPlayer.get(j).getCardColor().getValue())
+                            .build()
+                    );
+            }
         }
+
+        System.out.println("players = " + players.toString());
+
+
 
 
 

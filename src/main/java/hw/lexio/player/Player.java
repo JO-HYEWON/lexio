@@ -18,4 +18,13 @@ public class Player {
         this.cardNumberValue = cardNumberValue;
         this.cardColorValue = cardColorValue;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "playerName='" + playerName + '\'' +
+                ", cardNumberValue=" + cardNumberValue +
+                ", cardColorValue=" + cardColorValue +
+                '}';
+    }
 }

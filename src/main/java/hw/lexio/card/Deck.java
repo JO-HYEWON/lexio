@@ -82,11 +82,16 @@ public class Deck {
                                 .build());
             }
         }
-        savePlayerDeck(players);
+        savePlayerDeck(players, cardPerPlayer);
         return players;
     }
 
-    private void savePlayerDeck(List<Player> players) {
+    private void savePlayerDeck(List<Player> players, int cardPerPlayer) {
         System.out.println(players.toString());
+        System.out.println(cardPerPlayer);
+
+        // LEXIO_DECK_INIT_RECORD 테이블에 저장
+
+
     }
 }

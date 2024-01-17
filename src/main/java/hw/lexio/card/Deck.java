@@ -26,9 +26,9 @@ public class Deck {
         }
 
         // 총 60개의 카드를 만듦
-        for (CardValue cardValue : CardValue.values()) {
-            for (CardColor cardColor : CardColor.values()) {
-                Card card = new Card(cardValue, cardColor);
+        for (CardNumber cardNumber : CardNumber.values()) {
+            for (CardShape cardShape : CardShape.values()) {
+                Card card = new Card(cardNumber, cardShape);
                 initialDeck.add(card);
             }
         }

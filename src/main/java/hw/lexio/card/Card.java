@@ -2,20 +2,20 @@ package hw.lexio.card;
 
 public class Card {
 
-    private final CardValue cardValue;
-    private final CardColor cardColor;
+    private final CardNumber cardNumber;
+    private final CardShape cardShape;
 
 
-    public Card(CardValue cardValue,CardColor cardColor) {
-        this.cardValue = cardValue;
-        this.cardColor = cardColor;
+    public Card(CardNumber cardNumber, CardShape cardShape) {
+        this.cardNumber = cardNumber;
+        this.cardShape = cardShape;
     }
 
-    public CardColor getCardColor() {
-        return cardColor;
+    public CardShape getCardColor() {
+        return cardShape;
     }
 
-    public CardValue getCardValue() {
-        return cardValue;
+    public CardNumber getCardValue() {
+        return cardNumber;
     }
 }

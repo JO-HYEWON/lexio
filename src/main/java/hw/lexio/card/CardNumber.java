@@ -1,6 +1,6 @@
 package hw.lexio.card;
 
-public enum CardValue {
+public enum CardNumber {
 
     THREE(1),
     FOUR(2),
@@ -20,7 +20,7 @@ public enum CardValue {
 
     private final int value;
 
-    CardValue(int value) {
+    CardNumber(int value) {
         this.value = value;
     }
 

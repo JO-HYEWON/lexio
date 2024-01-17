@@ -6,15 +6,15 @@ public class Calculation {
 
     // 2명~5명 나눠서
 
-    void onePlayer() {
-
-    }
-
     void twoPlayer() {
 
     }
 
     void threePlayer() {
+
+    }
+
+    void fourPlayer() {
 
     }
 

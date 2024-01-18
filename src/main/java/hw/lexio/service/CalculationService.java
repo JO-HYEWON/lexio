@@ -1,6 +1,9 @@
-package hw.lexio.calculation;
+package hw.lexio.service;
 
-public class Calculation {
+import org.springframework.stereotype.Service;
+
+@Service
+public class CalculationService {
 
     // 게임이 끝난 후 점수 계산
 

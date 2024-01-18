@@ -1,4 +1,4 @@
-package hw.lexio.card;
+package hw.lexio.dto;
 
 public enum Jokbo {
 

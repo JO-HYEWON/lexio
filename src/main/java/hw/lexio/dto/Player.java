@@ -1,4 +1,4 @@
-package hw.lexio.player;
+package hw.lexio.dto;
 
 import lombok.Builder;
 import lombok.Getter;

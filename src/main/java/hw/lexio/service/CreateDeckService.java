@@ -1,13 +1,20 @@
-package hw.lexio.card;
+package hw.lexio.service;
 
-import hw.lexio.player.Player;
+import hw.lexio.dto.Card;
+import hw.lexio.dto.CardNumber;
+import hw.lexio.dto.CardShape;
+import hw.lexio.dto.Player;
+import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Deck {
+@Service
+public class CreateDeckService {
 
     public int setPlayer(int numberOfPlayer) {
         if (ObjectUtils.isEmpty(numberOfPlayer)) {

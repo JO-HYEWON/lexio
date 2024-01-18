@@ -1,4 +1,4 @@
-package hw.lexio.calculation;
+package hw.lexio.dto;
 
 public class Score {
 

@@ -6,19 +6,20 @@ public class Calculation {
 
     // 2명~5명 나눠서
 
-    void twoPlayer() {
+    // 넘겨받은 score를 더함
+    void twoPlayer(int score) {
 
     }
 
-    void threePlayer() {
+    void threePlayer(int score) {
 
     }
 
-    void fourPlayer() {
+    void fourPlayer(int score) {
 
     }
 
-    void fivePlayer() {
+    void fivePlayer(int score) {
 
     }
 

@@ -2,7 +2,7 @@ package hw.lexio.card;
 
 public enum CardShape {
 
-    CLOUD(1, "(blue"),
+    CLOUD(1, "blue"),
     MOON(2, "yellow"),
     STAR(3, "green"),
     SUN(4, "sun");

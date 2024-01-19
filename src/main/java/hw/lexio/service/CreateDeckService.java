@@ -1,17 +1,20 @@
 package hw.lexio.service;
 
+import hw.lexio.controller.ResultEntity;
 import hw.lexio.dto.Card;
-import hw.lexio.dto.CardNumber;
-import hw.lexio.dto.CardShape;
+import hw.lexio.dto.type.CardNumber;
+import hw.lexio.dto.type.CardShape;
 import hw.lexio.dto.Player;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.OK;
 
 @Service
 public class CreateDeckService {
@@ -25,11 +28,11 @@ public class CreateDeckService {
         return cardPerPlayer;
     }
 
-    public void createDeck(int numberOfPlayer) {
+    public List<Player> createDeck(int numberOfPlayer) {
         List<Card> initialDeck = new ArrayList<>();
         int totalCardCount = 60 - ((5 - numberOfPlayer) * 12);
         if (numberOfPlayer > 5 || numberOfPlayer < 0) {
-            return;
+            return null;
         }
 
         // 총 60개의 카드를 만듦
@@ -60,8 +63,9 @@ public class CreateDeckService {
         int cardPerPlayer = setPlayer(numberOfPlayer);
 
         // 카드 분배
-        distributeDeck(totalDeckByPlayer, numberOfPlayer, cardPerPlayer, totalCardCount);
+        List<Player> totalDeck = distributeDeck(totalDeckByPlayer, numberOfPlayer, cardPerPlayer, totalCardCount);
 
+        return totalDeck;
     }
 
     public List<Player> distributeDeck(List<Card> deck, int numberOfPlayer, int cardPerPlayer, int totalCardCount) {
@@ -94,10 +98,8 @@ public class CreateDeckService {
     }
 
     private void savePlayerDeck(List<Player> players, int cardPerPlayer) {
-        System.out.println(players.toString());
-        System.out.println(cardPerPlayer);
 
-        // LEXIO_DECK_INIT_RECORD 테이블에 저장
+        // 테이블에 저장
 
 
     }

@@ -1,7 +1,7 @@
 package hw.lexio.service;
 
 import hw.lexio.dto.Card;
-import hw.lexio.dto.Jokbo;
+import hw.lexio.dto.type.Jokbo;
 import hw.lexio.dto.Player;
 import org.springframework.stereotype.Service;
 

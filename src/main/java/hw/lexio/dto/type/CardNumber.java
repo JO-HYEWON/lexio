@@ -1,4 +1,4 @@
-package hw.lexio.dto;
+package hw.lexio.dto.type;
 
 public enum CardNumber {
 

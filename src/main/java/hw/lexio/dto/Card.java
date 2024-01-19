@@ -1,5 +1,8 @@
 package hw.lexio.dto;
 
+import hw.lexio.dto.type.CardNumber;
+import hw.lexio.dto.type.CardShape;
+
 public class Card {
 
     private final CardNumber cardNumber;

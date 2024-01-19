@@ -1,6 +1,5 @@
 package hw.lexio.service;
 
-import hw.lexio.controller.ResultEntity;
 import hw.lexio.dto.Card;
 import hw.lexio.dto.type.CardNumber;
 import hw.lexio.dto.type.CardShape;

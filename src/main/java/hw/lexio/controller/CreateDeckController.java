@@ -26,7 +26,7 @@ public class CreateDeckController {
         List<Player> totalDeck = createDeckService.createDeck(numberOfPlayer);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.set("game", "lexio");
+        headers.set("lexio", "deck");
 
         return ResponseEntity.ok()
                 .headers(headers)

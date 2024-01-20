@@ -18,19 +18,19 @@ public class CreateDeckController {
 
     private final CreateDeckService createDeckService;
     @PostMapping("/")
-    public ResponseEntity<List<Player>> createDeck() {
+    public ResponseEntity<String> createDeck() {
 
         // 들어오는 값으로 변경
         int numberOfPlayer = 5;
 
-        List<Player> totalDeck = createDeckService.createDeck(numberOfPlayer);
+        createDeckService.createDeck(numberOfPlayer);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.set("lexio", "deck");
+        headers.set("lexio", "gameId");
 
         return ResponseEntity.ok()
                 .headers(headers)
-                .body(totalDeck);
+                .body("imsi");
     }
 
 }

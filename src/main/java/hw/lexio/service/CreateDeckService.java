@@ -27,7 +27,7 @@ public class CreateDeckService {
         return cardPerPlayer;
     }
 
-    public List<Player> createDeck(int numberOfPlayer) {
+    public String createDeck(int numberOfPlayer) {
         List<Card> initialDeck = new ArrayList<>();
         int totalCardCount = 60 - ((5 - numberOfPlayer) * 12);
         if (numberOfPlayer > 5 || numberOfPlayer < 0) {
@@ -61,13 +61,13 @@ public class CreateDeckService {
         // 한 사람당 갖는 카드의 수 계산
         int cardPerPlayer = setPlayer(numberOfPlayer);
 
-        // 카드 분배
-        List<Player> totalDeck = distributeDeck(totalDeckByPlayer, numberOfPlayer, cardPerPlayer, totalCardCount);
+        // 카드 분배 후 DB 저장
+        String gameId = distributeDeck(totalDeckByPlayer, numberOfPlayer, cardPerPlayer, totalCardCount);
 
-        return totalDeck;
+        return gameId;
     }
 
-    public List<Player> distributeDeck(List<Card> deck, int numberOfPlayer, int cardPerPlayer, int totalCardCount) {
+    public String distributeDeck(List<Card> deck, int numberOfPlayer, int cardPerPlayer, int totalCardCount) {
 
         System.out.println("넘겨받은 카드는?");
         for (Card card : deck) {
@@ -92,14 +92,17 @@ public class CreateDeckService {
                                 .build());
             }
         }
-        savePlayerDeck(players, cardPerPlayer);
-        return players;
+        String gameId = savePlayerDeck(players, cardPerPlayer);
+
+        return gameId;
     }
 
-    private void savePlayerDeck(List<Player> players, int cardPerPlayer) {
+    private String savePlayerDeck(List<Player> players, int cardPerPlayer) {
 
         // 테이블에 저장
 
+        // 게임ID 리턴 (id는 어떻게?)
 
+        return null;
     }
 }

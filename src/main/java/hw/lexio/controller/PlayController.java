@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/lexio/play")
 @RequiredArgsConstructor
@@ -28,6 +30,7 @@ public class PlayController {
      * 2. 생성된 덱의 id를 전달(gameStart)
      * 3. id로 리스트를 조회하여 플레이어들에게 카드 배분
      * 4. 카드 배분 후 선 결정
+     * ------------------------------------- 여기까지
      * 5. 1빠가 먼저 action 실행
      * 6. 그 다음 순서가 action 실행
      * 7. 카드가 0개가 되면 점수 계산 후 분배
@@ -42,7 +45,6 @@ public class PlayController {
         int numberOfPlayer = 5;
 
         playService.gameStart(numberOfPlayer);
-
 
         // 계산히 끝난 후 처음 시작할 때
         Player player = initFirstTurn();

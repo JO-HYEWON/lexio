@@ -14,7 +14,7 @@ public class Card {
         this.cardShape = cardShape;
     }
 
-    public CardShape getCardColor() {
+    public CardShape getCardShape() {
         return cardShape;
     }
 

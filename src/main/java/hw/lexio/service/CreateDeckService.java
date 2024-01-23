@@ -51,7 +51,7 @@ public class CreateDeckService {
         // console 출력
         System.out.println("만들어진 카드는? ");
         for (Card card : totalDeckByPlayer) {
-            System.out.println("["+card.getCardValue().getValue() + ", " + card.getCardColor().getDescription()+"]");
+            System.out.println("["+card.getCardValue().getValue() + ", " + card.getCardShape().getDescription()+"]");
         }
 
         System.out.println("플레이어의 수는 ? : " + numberOfPlayer);
@@ -71,7 +71,7 @@ public class CreateDeckService {
 
         System.out.println("넘겨받은 카드는?");
         for (Card card : deck) {
-            System.out.println("["+card.getCardValue().getValue() + ", " + card.getCardColor().getDescription()+"]");
+            System.out.println("["+card.getCardValue().getValue() + ", " + card.getCardShape().getDescription()+"]");
         }
         System.out.println("플레이어의 수? : " + numberOfPlayer);
 //        System.out.println("한 사람당 카드의 수는? = " + cardPerPlayer);
@@ -88,7 +88,7 @@ public class CreateDeckService {
                 players.add(Player.builder()
                                 .playerName("Player" + (i + 1))
                                 .cardNumberValue(deckByPlayer.get(j).getCardValue().getValue())
-                                .cardColorValue(deckByPlayer.get(j).getCardColor().getValue())
+                                .cardColorValue(deckByPlayer.get(j).getCardShape().getValue())
                                 .build());
             }
         }

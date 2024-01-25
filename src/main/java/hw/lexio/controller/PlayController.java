@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/lexio/play")
+@RequestMapping("/lexio")
 @RequiredArgsConstructor
 public class PlayController {
 

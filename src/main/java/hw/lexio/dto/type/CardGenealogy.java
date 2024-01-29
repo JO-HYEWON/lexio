@@ -1,6 +1,6 @@
 package hw.lexio.dto.type;
 
-public enum Jokbo {
+public enum CardGenealogy {
 
     PASS(0, "no submit card", 0),
     SINGLE(1, "submit 1 card", 0),
@@ -17,7 +17,7 @@ public enum Jokbo {
     private final String description;
     private final int value;
 
-    Jokbo(int requiredCardAmount, String description, int value) {
+    CardGenealogy(int requiredCardAmount, String description, int value) {
         this.requiredCardAmount = requiredCardAmount;
         this.description = description;
         this.value = value;

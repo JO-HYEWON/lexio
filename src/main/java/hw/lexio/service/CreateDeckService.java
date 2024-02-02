@@ -4,6 +4,7 @@ import hw.lexio.dto.Card;
 import hw.lexio.dto.type.CardNumber;
 import hw.lexio.dto.type.CardShape;
 import hw.lexio.dto.Player;
+import hw.lexio.repository.LexioCreateDeckRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -18,6 +19,12 @@ import static org.springframework.http.HttpStatus.OK;
 @Service
 public class CreateDeckService {
 
+    private final LexioCreateDeckRepository repository;
+
+    public CreateDeckService(LexioCreateDeckRepository repository) {
+        this.repository = repository;
+    }
+
     public int setPlayer(int numberOfPlayer) {
         if (ObjectUtils.isEmpty(numberOfPlayer)) {
             return -1;
@@ -27,7 +34,7 @@ public class CreateDeckService {
         return cardPerPlayer;
     }
 
-    public String createDeck(int numberOfPlayer) {
+    public Long createDeck(int numberOfPlayer) {
         List<Card> initialDeck = new ArrayList<>();
         int totalCardCount = 60 - ((5 - numberOfPlayer) * 12);
         if (numberOfPlayer > 5 || numberOfPlayer < 0) {
@@ -62,12 +69,12 @@ public class CreateDeckService {
         int cardPerPlayer = setPlayer(numberOfPlayer);
 
         // 카드 분배 후 DB 저장
-        String gameId = distributeDeck(totalDeckByPlayer, numberOfPlayer, cardPerPlayer, totalCardCount);
+        Long gameId = distributeDeck(totalDeckByPlayer, numberOfPlayer, cardPerPlayer, totalCardCount);
 
         return gameId;
     }
 
-    public String distributeDeck(List<Card> deck, int numberOfPlayer, int cardPerPlayer, int totalCardCount) {
+    public Long distributeDeck(List<Card> deck, int numberOfPlayer, int cardPerPlayer, int totalCardCount) {
 
         System.out.println("넘겨받은 카드는?");
         for (Card card : deck) {
@@ -86,22 +93,27 @@ public class CreateDeckService {
             deckByPlayer = deck.subList(12 * i, 12 * (i + 1));
             for (int j = 0; j < 12; j++) {
                 players.add(Player.builder()
-                                .playerName("Player" + (i + 1))
-                                .cardNumberValue(deckByPlayer.get(j).getCardValue().getValue())
-                                .cardColorValue(deckByPlayer.get(j).getCardShape().getValue())
+                                .playerNumber(Long.valueOf((i + 1)))
+                                .cardNumberValue(Long.valueOf(deckByPlayer.get(j).getCardValue().getValue()))
+                                .cardColorValue(Long.valueOf(deckByPlayer.get(j).getCardShape().getValue()))
                                 .build());
             }
         }
-        String gameId = savePlayerDeck(players, cardPerPlayer);
+        Long gameId = savePlayerDeck(players, cardPerPlayer);
 
         return gameId;
     }
 
-    private String savePlayerDeck(List<Player> players, int cardPerPlayer) {
+    private Long savePlayerDeck(List<Player> players, int cardPerPlayer) {
 
-        // 테이블에 저장
+        System.out.println("-----------------------------");
+        System.out.println("players = " + players);
 
-        // 게임ID 리턴 (id는 어떻게?)
+//        return repository
+//                .save()
+
+
+        //
 
         return null;
     }

@@ -1,12 +1,11 @@
 #### 테이블1
-##### LEXIO_CARD_INIT (카드_초기)
-GAME_ID - VARCHAR20 (해당 게임의 ID값)
-PLAYER_ORDER - VARCHAR20(플레이어 순서)
-NUMERIC_VALUE - INT10 (숫자값)
-COLOR_VALUE - INT10 (색상값)
-COLOR_NAME - VARCHAR(10) (색상명)
-PLAYER_NO - INT10(플레이어 수)
-GAME_START_DATE_TIME - VARCHAR? (게임시작일시)
+##### LEXIO_DECK (카드_초기)
+GAME_ID - int10 (해당 게임의 ID값)
+PLAYER_ID - int10 (플레이어 ID값)
+CARD_NUMBER_VALUE - INT10 (숫자값)
+CARD_COLOR_VALUE - INT10 (색상값)
+PLAYER_NUMBER - INT10(플레이어 수)
+GAME_START_DATE - timestamp (게임시작일시)
 
 #### 테이블2
 ##### LEXIO_PLAYER_CARD(사용자_카드)

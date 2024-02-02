@@ -14,7 +14,7 @@ public class PlayService {
 
     public Player gameStart(int numberOfPlayer) {
         // 덱 생성
-        String gameId = createDeckService.createDeck(numberOfPlayer);
+        Long playerNumber = createDeckService.createDeck(numberOfPlayer);
         // 첫 번째 순서 결정
         Player firstPlayer = findFirstTurnPlayer();
 

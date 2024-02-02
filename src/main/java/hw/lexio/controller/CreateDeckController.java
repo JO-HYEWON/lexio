@@ -4,6 +4,7 @@ import hw.lexio.dto.Player;
 import hw.lexio.service.CreateDeckService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,20 +18,14 @@ import java.util.List;
 public class CreateDeckController {
 
     private final CreateDeckService createDeckService;
-    @PostMapping("/")
-    public ResponseEntity<String> createDeck() {
+    @PostMapping
+    public ResponseEntity<Long> createDeck() {
 
-        // 들어오는 값으로 변경
+        // 들어오는 값으로 변경할 것
         int numberOfPlayer = 5;
 
-        createDeckService.createDeck(numberOfPlayer);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("lexio", "gameId");
-
-        return ResponseEntity.ok()
-                .headers(headers)
-                .body("imsi");
+        return new ResponseEntity<>(
+                createDeckService.createDeck(numberOfPlayer), HttpStatus.OK);
     }
 
 }

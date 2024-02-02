@@ -1,28 +1,39 @@
 package hw.lexio.dto;
 
+import hw.lexio.entity.CreateDeck;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 public class Player {
 
-    private final String playerName;
+    private final Long playerNumber;
 
-    private final int cardNumberValue;
+    private final Long cardNumberValue;
 
-    private final int cardColorValue;
+    private final Long cardColorValue;
+
 
     @Builder
-    public Player(String playerName, int cardNumberValue, int cardColorValue) {
-        this.playerName = playerName;
+    public Player(Long playerNumber, Long cardNumberValue, Long cardColorValue) {
+        this.playerNumber = playerNumber;
         this.cardNumberValue = cardNumberValue;
         this.cardColorValue = cardColorValue;
+    }
+
+
+    public CreateDeck toEntity() {
+        return CreateDeck.builder()
+                .playerId(1L) // 화면에서 가져온 값으로 바꿀 것,
+                .cardNumberValue(cardNumberValue)
+                .cardColorValue(cardColorValue)
+                .build();
     }
 
     @Override
     public String toString() {
         return "Player{" +
-                "playerName='" + playerName + '\'' +
+                "playerNumber='" + playerNumber + '\'' +
                 ", cardNumberValue=" + cardNumberValue +
                 ", cardColorValue=" + cardColorValue +
                 '}';
